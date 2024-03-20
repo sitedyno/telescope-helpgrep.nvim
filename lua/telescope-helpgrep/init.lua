@@ -22,10 +22,10 @@ function M.picker()
 	builtin.live_grep({
 		prompt_title = "Help Grep",
 		search_dirs = dirs,
-    glob_pattern = "*.txt",
-    disable_coordinates = true,
-    path_display = { "tail", },
-    attach_mappings = mappings.open_help_buf,
+		glob_pattern = "*.txt",
+		-- disable_coordinates = true,
+		-- path_display = { "tail", },
+		attach_mappings = mappings.open_help_buf,
 	})
 end
 
