@@ -23,8 +23,18 @@ function M.picker()
 		prompt_title = "Help Grep",
 		search_dirs = dirs,
 		glob_pattern = "*.txt",
-		-- disable_coordinates = true,
-		-- path_display = { "tail", },
+		disable_coordinates = true,
+		path_display = function(_, path)
+			local tail = require("telescope.utils").path_tail(path)
+			if vim.fn.match(path, "runtime") ~= -1 then
+				tail = "neovim - " .. tail
+			else
+				local split = vim.fn.split(path, "doc")
+				split = vim.fn.split(split[1], "/")
+				tail = split[#split] .. " - " .. tail
+			end
+			return tail
+		end,
 		attach_mappings = mappings.open_help_buf,
 	})
 end
