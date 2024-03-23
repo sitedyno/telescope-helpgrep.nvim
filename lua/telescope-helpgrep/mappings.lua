@@ -8,7 +8,8 @@ function M.open_help_buf(prompt_bufnr, map)
     actions.close(prompt_bufnr)
     local selection = action_state.get_selected_entry()
 
-    local status = pcall(vim.cmd, string.format("sfind %s", selection.filename))
+    local cmd = string.format("botright vs %s", selection.filename)
+    local status = pcall(vim.cmd, cmd)
 
     if status then
       -- Display help text as intented (:h help-buffer-options)
